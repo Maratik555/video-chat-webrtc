@@ -4,6 +4,7 @@ import ACTIONS from '../../socket/actions'
 import {useHistory} from 'react-router'
 import {v4} from 'uuid'
 
+
 export default function Main() {
   const history = useHistory()
   const [rooms, updateRooms] = useState([])
@@ -20,12 +21,12 @@ export default function Main() {
   return (
     <div className="join-block" ref={rootNode}>
       <h1>Available Rooms</h1>
-      <br/>
+      <hr/>
       <ul>
         {rooms.map(roomID => (
           <li key={roomID}>
             {roomID}
-            <button className="btn btn-outline-info" onClick={() => {
+            <button onClick={() => {
               history.push(`/room/${roomID}`)
             }}>JOIN ROOM
             </button>
@@ -33,7 +34,7 @@ export default function Main() {
         ))}
       </ul>
 
-      <button className="btn btn-outline-dark" onClick={() => {
+      <button onClick={() => {
         history.push(`/room/${v4()}`)
       }}>Create New Room
       </button>
